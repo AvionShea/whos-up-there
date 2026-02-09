@@ -86,7 +86,7 @@ async function issLocation() {
 
 // Astronauts currently in space
 async function peopleInSpace() {
-    const peopleInSpaceUrl = "https://corsproxy.io/?http://api.open-notify.org/astros.json";
+    const peopleInSpaceUrl = "http://api.open-notify.org/astros.json";
     try {
         const peopleInSpaceResponse = await fetch(peopleInSpaceUrl);
         if (!peopleInSpaceResponse.ok) {
