@@ -77,7 +77,7 @@ async function issLocation() {
     } catch (error) {
         console.error("An error has occurred: ", error);
         issPositionCard.innerHTML = `
-    <div class="label">Sorry. We can't locate the ISS..</div>
+    <div class="label">Sorry. We can't locate the ISS.</div>
 `;
     }
 }
