@@ -86,7 +86,7 @@ async function issLocation() {
 
 // Astronauts currently in space
 async function peopleInSpace() {
-    const peopleInSpaceUrl = "https://thingproxy.freeboard.io/fetch/http://api.open-notify.org/astros.json";
+    const peopleInSpaceUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('http://api.open-notify.org/astros.json')}`;
     try {
         const peopleInSpaceResponse = await fetch(peopleInSpaceUrl);
         if (!peopleInSpaceResponse.ok) {
