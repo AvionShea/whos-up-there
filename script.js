@@ -86,28 +86,21 @@ async function issLocation() {
 
 // Astronauts currently in space
 async function peopleInSpace() {
-    const peopleInSpaceUrl = "https://api.open-notify.org/astros.json";
+    const peopleInSpaceUrl = "https://lldev.thespacedevs.com/2.2.0/astronaut/?in_space=true&limit=25";
     try {
         const peopleInSpaceResponse = await fetch(peopleInSpaceUrl);
         if (!peopleInSpaceResponse.ok) {
             throw new Error("Sorry. We can't locate the Astronauts.");
         }
         const peopleInSpaceData = await peopleInSpaceResponse.json();
-        //console.log(peopleInSpaceData);
-        //return peopleInSpaceData;
 
-        const numOfPeopleInSpace = peopleInSpaceData.number;
-        //console.log(numOfPeopleInSpace);
+        const numOfPeopleInSpace = peopleInSpaceData.count;
+        const namesOfPeopleInSpace = peopleInSpaceData.results;
 
-        const namesOfPeopleInSpace = peopleInSpaceData.people;
-        //console.log(namesOfPeopleInSpace);
-
-        //Creating List of Names
         let astronautListHtml = "";
-
         namesOfPeopleInSpace.forEach((person) => {
-            astronautListHtml += `<li>${person.name} - 🚀${person.craft}</li>`;
-        })
+            astronautListHtml += `<li>${person.name}</li>`;
+        });
 
         peopleInSpaceCard.innerHTML = `
     <div class="label">👨‍🚀 PEOPLE IN SPACE</div>
