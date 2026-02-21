@@ -86,13 +86,13 @@ async function issLocation() {
 
 // Astronauts currently in space
 async function peopleInSpace() {
-    const peopleInSpaceUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://api.open-notify.org/astros.json')}`;
+    const peopleInSpaceUrl = "https://api.open-notify.org/astros.json";
     try {
         const peopleInSpaceResponse = await fetch(peopleInSpaceUrl);
         if (!peopleInSpaceResponse.ok) {
             throw new Error("Sorry. We can't locate the Astronauts.");
         }
-        const peopleInSpaceData = JSON.parse((await peopleInSpaceResponse.json()).contents);
+        const peopleInSpaceData = await peopleInSpaceResponse.json();
         //console.log(peopleInSpaceData);
         //return peopleInSpaceData;
 
