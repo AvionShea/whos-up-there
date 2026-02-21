@@ -32,7 +32,7 @@ window.onload = function () {
 
 // ISS (Space Station) Location
 async function issLocation() {
-    const issLocationUrl = "https://corsproxy.io/?http://api.open-notify.org/iss-now.json";
+    const issLocationUrl = "https://api.wheretheiss.at/v1/satellites/25544";
     try {
         const issLocationResponse = await fetch(issLocationUrl);
         if (!issLocationResponse.ok) {
@@ -43,8 +43,8 @@ async function issLocation() {
         //return issLocationData;
         //console.log(issLocationData.iss_position.latitude);
         //console.log(issLocationData.iss_position.longitude);
-        let issLatitude = issLocationData.iss_position.latitude;
-        let issLongitude = issLocationData.iss_position.longitude;
+        let issLatitude = issLocationData.latitude;
+        let issLongitude = issLocationData.longitude;
 
         let formattedLat;
         let formattedLon;
@@ -86,13 +86,13 @@ async function issLocation() {
 
 // Astronauts currently in space
 async function peopleInSpace() {
-    const peopleInSpaceUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('http://api.open-notify.org/astros.json')}`;
+    const peopleInSpaceUrl = `https://api.allorigins.win/get?url=${encodeURIComponent('https://api.open-notify.org/astros.json')}`;
     try {
         const peopleInSpaceResponse = await fetch(peopleInSpaceUrl);
         if (!peopleInSpaceResponse.ok) {
             throw new Error("Sorry. We can't locate the Astronauts.");
         }
-        const peopleInSpaceData = await peopleInSpaceResponse.json();
+        const peopleInSpaceData = JSON.parse((await peopleInSpaceResponse.json()).contents);
         //console.log(peopleInSpaceData);
         //return peopleInSpaceData;
 
